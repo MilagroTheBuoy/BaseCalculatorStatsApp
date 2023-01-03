@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BaseCalculatorStatsApp</string>
+    <string-array name="modes">
+        <item>Decimal</item>
+        <item>Binary</item>
+        <item>Hexadecimal</item>
+    </string-array>
+</resources>
