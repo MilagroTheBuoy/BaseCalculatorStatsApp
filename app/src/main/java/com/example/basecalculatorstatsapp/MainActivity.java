@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Console;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public TextView txtInput;
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void calculateResult() {
         String equation = txtInput.getText().toString();
         String answer;
-        if(!equation.equals("") && validEquation(equation)){
+        try {
             DecimalCalculator decimalCalculator = new DecimalCalculator();
             if(mode.equals("Binary")){
                 answer = decimalCalculator.giveAnswer(equation, 2);
@@ -162,12 +164,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
             txtOutput.setText(answer);
         }
-        else{
+        catch(Exception e){
+            System.out.println("it worked");
             Toast.makeText(this, "Invalid Syntax", Toast.LENGTH_SHORT).show();
         }
+
     }
 
-    public boolean validEquation(String eqn){
+    /*public boolean validEquation(String eqn){
         if(!(Character.isAlphabetic(eqn.charAt(0)) || Character.isDigit(eqn.charAt(0)) || eqn.charAt(0) =='(')){
             return false;
         }
@@ -201,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         }
         return true;
-    }
+    }*/
 
     public void editInput(String btnString){
         if(!txtOutput.getText().toString().equals("")){
